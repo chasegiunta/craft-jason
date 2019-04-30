@@ -1,0 +1,77 @@
+{
+  "name": "start",
+  "version": "1.3.3",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "dev": "vue-cli-service serve",
+    "icons": "vsvg -s ./src/icons -t ./src/icons-vsvg"
+  },
+  "dependencies": {
+    "autosize": "^4.0.2",
+    "core-js": "^2.6.5",
+    "vue": "^2.5.0",
+    "vue-deepset": "^0.6.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-service": "^3.0.0-rc.10",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.2",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "glob-all": "^3.1.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.3",
+    "node-sass-glob-importer": "^5.2.0",
+    "postcss-import": "^12.0.0",
+    "purgecss-webpack-plugin": "^1.2.0",
+    "purgecss-whitelister": "^2.1.0",
+    "sane": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "tailwindcss": "^0.7.0",
+    "vue-template-compiler": "^2.5.16",
+    "webpack-manifest-plugin": "^2.0.3",
+    "write-file-webpack-plugin": "^4.3.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-console": "off"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "tailwindcss": "./tailwind.js",
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "resolutions": {
+    "terser": "3.14.1"
+  }
+}

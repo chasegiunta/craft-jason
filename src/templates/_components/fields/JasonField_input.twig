@@ -1,0 +1,30 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Jason plugin for Craft CMS 3.x
+ *
+ * JasonField Field Input
+ *
+ * @author    Chase Giunta
+ * @copyright Copyright (c) 2019 Chase Giunta
+ * @link      https://chasegiunta.com
+ * @package   Jason
+ * @since     1.0.0
+ */
+#}
+
+<div id="{{ id }}">
+  <tree
+    {% if valid == true %}
+      :value="{{ value }}"
+      :valid-on-load="true"
+    {% else %}
+      value="{{ value }}"
+      :valid-on-load="false"
+    {% endif %}
+    name="{{ name }}"
+    namespaced-id="{{ namespacedId }}"
+    :readonly="{{ readonly == 'true' or readonly == 1 ? 'true' : 'false' }}"
+    :allow-raw-editing="{{ allowRawEditing == 'true' or allowRawEditing == 1 ? 'true' : 'false' }}"
+  ></tree> 
+</div> 
