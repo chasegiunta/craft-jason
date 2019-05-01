@@ -21,7 +21,8 @@
     <td v-else-if="reference.length > 0">
       <textarea
         ref="textarea"
-        class="block w-full outline-none resize-none focus:shadow-outline px-8px py-5px leading-normal"
+        style="box-sizing: border-box;"
+        class="block w-full h-auto outline-none resize-none focus:shadow-outline px-8px py-5px leading-normal"
         :value="nodevalue"
         @input="emitValueChange(reference, $event.target.value)"
         autocomplete="disabled"
