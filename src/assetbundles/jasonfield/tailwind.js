@@ -439,28 +439,28 @@ module.exports = {
     //   size: '2em',
     //   border: '3px',
     // }),
-    require('tailwindcss-transitions')({
-      variants: ['responsive'],
-      properties: {
-        all: 'all',
-        bg: 'background',
-      },
-      durations: {
-        default: '100ms',
-        '200': '200ms',
-        '300': '300ms',
-        '400': '400ms',
-        '500': '500ms',
-      },
-      timingFunctions: {
-        default: 'ease',
-        linear: 'linear',
-      },
-      delays: {
-        none: '0s',
-      },
-      willChange: {},
-    }),
+    // require('tailwindcss-transitions')({
+    //   variants: ['responsive'],
+    //   properties: {
+    //     all: 'all',
+    //     bg: 'background',
+    //   },
+    //   durations: {
+    //     default: '100ms',
+    //     '200': '200ms',
+    //     '300': '300ms',
+    //     '400': '400ms',
+    //     '500': '500ms',
+    //   },
+    //   timingFunctions: {
+    //     default: 'ease',
+    //     linear: 'linear',
+    //   },
+    //   delays: {
+    //     none: '0s',
+    //   },
+    //   willChange: {},
+    // }),
     // require('tailwindcss-triangle-after')({
     //   triangles: {
     //     select: {
