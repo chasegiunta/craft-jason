@@ -14,22 +14,23 @@
 #}
 
 <div id="{{ id }}">
-{% import "_includes/forms" as forms %}
+    {% import "_includes/forms" as forms %}
 
-{% do view.registerAssetBundle("chasegiunta\\jason\\assetbundles\\jasonfield\\JasonFieldAsset") %}
+    {% do view.registerAssetBundle("chasegiunta\\jason\\assetbundles\\jasonfield\\JasonFieldAsset") %}
 
-<div class="field">
-    <div class="heading">
-        <label id="readonly-label" for="readonly">Read Only</label>
+    <div class="field">
+        <div class="heading">
+            <label id="readonly-label" for="readonly">Read Only</label>
+        </div>
+
+        <jason-switch id="readonly" name="readonly" :value="{{ field['readonly'] ? field['readonly'] : 0 }}" @toggled="readonly = $event"></jason-switch>
     </div>
 
-    <jason-switch id="readonly" name="readonly" :value="{{ field['readonly'] ? field['readonly'] : 0 }}" @toggled="readonly = $event"></jason-switch>
-</div>
-
-<div v-if="readonly !== true" class="field">
-    <div class="heading">
-        <label id="allowRawEditing-label" for="allowRawEditing">Allow Raw Editing</label>
+    <div v-if="readonly !== true" class="field">
+        <div class="heading">
+            <label id="allowRawEditing-label" for="allowRawEditing">Allow Raw Editing</label>
+        </div>
+        <jason-switch id="allowRawEditing" name="allowRawEditing" :value="{{ field['allowRawEditing']|length ? field['allowRawEditing'] : 0 }}"  @toggled="allowRawEditing = $event"></jason-switch>
     </div>
-    <jason-switch id="allowRawEditing" name="allowRawEditing" :value="{{ field['allowRawEditing']|length ? field['allowRawEditing'] : 0 }}"  @toggled="allowRawEditing = $event"></jason-switch>
+    <input v-else type="hidden" name="allowRawEditing" value="false" />
 </div>
-<input v-else type="hidden" name="allowRawEditing" value="false" />
