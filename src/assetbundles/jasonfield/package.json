@@ -11,7 +11,7 @@
   "dependencies": {
     "autosize": "^4.0.2",
     "core-js": "^2.6.5",
-    "vue": "^2.5.0",
+    "vue": "^2.6.10",
     "vue-deepset": "^0.6.3"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "sane": "^3.0.0",
     "sass-loader": "^7.1.0",
     "tailwindcss": "^0.7.0",
-    "vue-template-compiler": "^2.5.16",
+    "vue-template-compiler": "^2.6.10",
     "webpack-manifest-plugin": "^2.0.3",
     "write-file-webpack-plugin": "^4.3.2"
   },
