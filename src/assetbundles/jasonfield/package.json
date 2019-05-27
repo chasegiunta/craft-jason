@@ -29,7 +29,7 @@
     "node-sass": "^4.9.3",
     "node-sass-glob-importer": "^5.2.0",
     "postcss-import": "^12.0.0",
-    "purgecss-webpack-plugin": "^1.2.0",
+    "purgecss-webpack-plugin": "^1.5.0",
     "purgecss-whitelister": "^2.1.0",
     "sane": "^3.0.0",
     "sass-loader": "^7.1.0",
