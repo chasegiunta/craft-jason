@@ -15,7 +15,7 @@
     "vue-deepset": "^0.6.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-prettier": "^4.0.1",
