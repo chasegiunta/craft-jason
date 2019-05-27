@@ -57,6 +57,13 @@ export default {
   },
   mounted() {
     autosize(this.$refs.textarea)
+
+    var replaceState = history.replaceState
+    var self = this
+    history.replaceState = function() {
+      replaceState.apply(history, arguments)
+      autosize.update(self.$refs.textarea)
+    }
   },
 }
 </script>
