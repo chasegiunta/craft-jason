@@ -32,7 +32,7 @@
     "purgecss-whitelister": "^2.4.0",
     "sane": "^4.1.0",
     "sass-loader": "^7.1.0",
-    "tailwindcss": "^0.7.0",
+    "tailwindcss": "^1.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack-manifest-plugin": "^2.0.3",
     "write-file-webpack-plugin": "^4.3.2"
