@@ -389,7 +389,7 @@ class JasonField extends Field
             ];
         $jsonVars = Json::encode($jsonVars);
         // Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').JasonJasonField(" . $jsonVars . ");");
-        Craft::$app->getView()->registerJs("!window.JasonField ? window.JasonField = {} : ''; window.JasonField['$id'] = $jsonVars");
+        Craft::$app->getView()->registerJs("!window.JasonField ? window.JasonField = {} : ''; window.JasonField['$namespacedId'] = $jsonVars");
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
