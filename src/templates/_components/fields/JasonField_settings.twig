@@ -6,7 +6,7 @@
  * JasonField Field Settings
  *
  * @author    Chase Giunta
- * @copyright Copyright (c) 2019 Chase Giunta
+ * @copyright Copyright (c) 2020 Chase Giunta
  * @link      https://chasegiunta.com
  * @package   Jason
  * @since     1.0.0
@@ -14,23 +14,22 @@
 #}
 
 <div id="{{ id }}">
-    {% import "_includes/forms" as forms %}
-
-    {% do view.registerAssetBundle("chasegiunta\\jason\\assetbundles\\jasonfield\\JasonFieldAsset") %}
-
     <div class="field">
         <div class="heading">
             <label id="readonly-label" for="readonly">Read Only</label>
         </div>
-
         <jason-switch id="readonly" name="readonly" :value="{{ field['readonly'] ? field['readonly'] : 0 }}" @toggled="readonly = $event"></jason-switch>
     </div>
 
-    <div v-if="readonly !== true" class="field">
+    <div :class="readonly == true ? 'opacity-0 absolute pointer-events-none' : ''" class="field">
         <div class="heading">
             <label id="allowRawEditing-label" for="allowRawEditing">Allow Raw Editing</label>
         </div>
-        <jason-switch id="allowRawEditing" name="allowRawEditing" :value="{{ field['allowRawEditing']|length ? field['allowRawEditing'] : 0 }}"  @toggled="allowRawEditing = $event"></jason-switch>
+        <jason-switch 
+            id="allowRawEditing"
+            name="allowRawEditing"
+            :value="{{ field['readonly'] == 'true' ? 'false' : field['allowRawEditing'] ? field['allowRawEditing'] : 'false' }}" 
+            @toggled="allowRawEditing = $event">
+        </jason-switch>
     </div>
-    <input v-else type="hidden" name="allowRawEditing" value="false" />
 </div>

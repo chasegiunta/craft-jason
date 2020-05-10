@@ -1,14 +1,14 @@
 <template>
   <div class="">
-    <div v-show="!showRaw" class="rounded w-full">
-      <button
+    <div v-show="!showRaw" class="w-full rounded">
+      <div
         @click.prevent="initField"
         v-if="fieldEmpty && !readonly"
-        class="w-full font-bold bg-grey-lighter text-grey-darker border border-grey px-5px py-3px text-xl flex items-center justify-center leading-none hover:border-blue"
+        class="w-full text-2xl btn"
       >
         +
-      </button>
-      <div v-else-if="fieldEmpty && readonly" class="text-grey-dark">
+      </div>
+      <div v-else-if="fieldEmpty && readonly" class="text-gray-700">
         No value entered for this <i>readonly</i> Jason (JSON) field.
       </div>
       <table class="w-full" v-if="error === null">
@@ -18,6 +18,7 @@
           :index="index"
           :nodevalue="value"
           :nodekey="key"
+          :readonly="readonly"
           :reference="`${key}`"
           @valuechange="addToData($event)"
           @keychange="replaceKey($event)"
@@ -25,25 +26,28 @@
         </node>
       </table>
     </div>
+
+    <div v-show="showRaw" class="highlight">
+      <pre class="!m-0 line-numbers"><code 
+              :id="`${namespacedId}-textarea`"
+              class="font-mono !text-sm language-json"
+              :class="[jsonString.length == 0 ? 'empty' : '', { 'border-red-200 focus:border-red-200': error }]"></code></pre>
+    </div>
+
     <textarea
-      ref="textarea"
-      :id="namespacedId"
+      class="absolute invisible"
       :name="name"
-      :class="{ 'border-red-light focus:border-red-light': error }"
-      class="text fullwidth font-mono"
       rows="2"
-      placeholder="Field is blank. Enter valid JSON."
       v-model="jsonString"
-      v-show="showRaw"
     >
     </textarea>
 
-    <div class="flex">
-      <ul v-show="error" class="errors">
+    <div class="flex items-start">
+      <ul v-show="error" class="!mt-3 errors">
         <li>{{ error }}</li>
       </ul>
 
-      <div v-if="allowRawEditing && !readonly" class="ml-auto py-10px">
+      <div v-if="allowRawEditing && !readonly" class="mt-3 ml-auto">
         <div class="btn" tabindex="0" @click.prevent="showRaw = !showRaw">
           {{ showRaw ? 'Done Editing' : 'Edit Raw Data' }}
         </div>
@@ -55,6 +59,8 @@
 <script>
 import { vueSet } from 'vue-deepset'
 import autosize from 'autosize'
+import Prism from 'prismjs'
+import { CodeJar } from 'codejar'
 
 export default {
   props: {
@@ -87,7 +93,8 @@ export default {
     } else {
       this.fieldValue = this.value
     }
-    autosize(this.$refs.textarea)
+    // autosize(this.$refs.textarea)
+    this.initJar()
   },
   watch: {
     jsonString: function(newValue) {
@@ -100,7 +107,8 @@ export default {
     showRaw: function(newValue) {
       if (newValue == true) {
         this.$nextTick(function() {
-          autosize.update(this.$refs.textarea)
+          this.jar.updateCode(this.jsonString)
+          // autosize.update(this.$refs.textarea)
         })
       }
     },
@@ -139,12 +147,22 @@ export default {
       showRaw: false,
       error: null,
       isValid: true,
+      jar: null,
     }
   },
   methods: {
     initField() {
-      // this.fieldValue = '{ " ": " " }'
       this.fieldValue = '[0]'
+    },
+    initJar() {
+      this.jar = new CodeJar(
+        document.querySelector(`#${this.namespacedId}-textarea`),
+        Prism.highlightElement,
+      )
+      this.jar.updateCode(this.jsonString)
+      this.jar.onUpdate(code => {
+        this.jsonString = code
+      })
     },
     addToData(event) {
       vueSet(this.fieldValue, event.reference, event.value.trim())
@@ -163,3 +181,19 @@ export default {
   },
 }
 </script>
+
+<style>
+@import 'prismjs/themes/prism-coy.css';
+@import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+</style>
+
+<style scoped>
+.empty::after {
+  content: 'Field is blank. Enter valid JSON.';
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 53px;
+  color: theme('colors.gray.600');
+}
+</style>

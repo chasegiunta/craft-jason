@@ -52,10 +52,14 @@ class JasonFieldAsset extends AssetBundle
 
         // define the relative path to CSS/JS files that should be registered with the page
         // when this asset bundle is registered
+        // $this->js = [
+        //     'http://localhost:8080/js/app.js',
+        //     'http://localhost:8080/js/chunk-vendors.js'
+        // ];
+
         $this->js = [
             'js/app.js',
             'js/chunk-vendors.js',
-            // 'http://localhost:8080/app.js'
         ];
 
         $this->css = [

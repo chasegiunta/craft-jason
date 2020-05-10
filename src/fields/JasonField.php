@@ -122,7 +122,7 @@ class JasonField extends Field
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-        if (Craft::$app->request->getIsSiteRequest()) {
+        if (Craft::$app->request->getIsSiteRequest() && !Craft::$app->request->getIsActionRequest()) {
             return json_decode($value, true);
         } else {
             return $value;
@@ -241,13 +241,13 @@ class JasonField extends Field
      */
     public function getSettingsHtml()
     {
+        // Register our asset bundle
+        Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class);
+        
         $id = Craft::$app->getView()->formatInputId('jason');
-        // $id = Craft::$app->getView()->formatInputId($this->handle);
-        $namespacedId = Craft::$app->getView()->namespaceInputId($id);
 
-        Craft::$app->getView()->registerJs("!window.JasonField ? window.JasonField = {
-            id: '$namespacedId'
-        } : ''");
+        $namespacedId = Craft::$app->getView()->namespaceInputId($id);
+        Craft::$app->getView()->registerJs("var event = new CustomEvent('build', { detail: '$namespacedId' }); window.dispatchEvent(event);");
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
             'jason/_components/fields/JasonField_settings',
@@ -380,16 +380,7 @@ class JasonField extends Field
         $id = Craft::$app->getView()->formatInputId($this->handle);
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
 
-        // Variables to pass down to our field JavaScript to let it namespace properly
-        $jsonVars = [
-            'id' => $id,
-            'name' => $this->handle,
-            'namespace' => $namespacedId,
-            'prefix' => Craft::$app->getView()->namespaceInputId(''),
-            ];
-        $jsonVars = Json::encode($jsonVars);
-        // Craft::$app->getView()->registerJs("$('#{$namespacedId}-field').JasonJasonField(" . $jsonVars . ");");
-        Craft::$app->getView()->registerJs("!window.JasonField ? window.JasonField = {} : ''; window.JasonField['$id'] = $jsonVars");
+        Craft::$app->getView()->registerJs("var event = new CustomEvent('build', { detail: '$namespacedId' }); window.dispatchEvent(event);");
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
@@ -436,6 +427,4 @@ class JasonField extends Field
             $element->addError($this->handle, Craft::t('site', 'Not valid JSON.'));
         }
     }
-
-
 }

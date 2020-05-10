@@ -10,12 +10,9 @@
       aria-checked="true"
       @click="toggle()"
     >
-      <div
-        class="lightswitch-container"
-        :style="`margin-left: ${active ? 0 : -11}px;`"
-      >
+      <div class="transition-all duration-150 lightswitch-container">
         <div class="label on"></div>
-        <div class="handle"></div>
+        <div class="!bg-white handle"></div>
         <div class="label off"></div>
       </div>
       <input type="hidden" :name="name" v-model="active" />
@@ -45,9 +42,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.lightswitch-container {
-  transition: all 100ms;
-}
-</style>
