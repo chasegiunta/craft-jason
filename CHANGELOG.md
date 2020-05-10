@@ -18,8 +18,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 - Fixed issue where certain circumstances would allow for editing when readonly is set to true.
 - Fixed issue where field settings weren't loading within Matrix fields.
-- Fixed issue where multiple Jason fields on a single edit screen (including Matrix fields) wouldn't render.
+- Fixed issue where multiple Jason fields on a single edit screen (including Matrix fields - thanks @kristoffeys) wouldn't render.
 - Fixed issue where settings field wasn't loading properly on Craft 3.4+.
+- Fixed issue with setting field values programattically from other plugins (thanks @goraxan!)
 
 ## 1.0.2 - 2019-05-27
 
