@@ -19,6 +19,7 @@ use craft\base\Field;
 use craft\helpers\Db;
 use yii\db\Schema;
 use craft\helpers\Json;
+use yii\web\View;
 
 /**
  * JasonField Field
@@ -242,7 +243,7 @@ class JasonField extends Field
     public function getSettingsHtml()
     {
         // Register our asset bundle
-        Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class);
+        Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class, View::POS_BEGIN );
         
         $id = Craft::$app->getView()->formatInputId('jason');
 
