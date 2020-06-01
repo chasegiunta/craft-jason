@@ -12,7 +12,7 @@
     "codejar": "^2.0.0",
     "prismjs": "^1.20.0",
     "tailwindcss-important": "^1.0.0",
-    "vue": "^2.6.10",
+    "vue": "^2.6.11",
     "vue-deepset": "^0.6.3"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "postcss-import": "^12.0.0",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.4.6",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.11",
     "webpack-manifest-plugin": "^2.2.0",
     "write-file-webpack-plugin": "^4.5.0"
   },
