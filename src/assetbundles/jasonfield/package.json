@@ -28,7 +28,7 @@
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-import": "^12.0.0",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.4.6",
+    "tailwindcss": "^1.7.6",
     "vue-template-compiler": "^2.6.10",
     "webpack-manifest-plugin": "^2.2.0",
     "write-file-webpack-plugin": "^4.5.0"
