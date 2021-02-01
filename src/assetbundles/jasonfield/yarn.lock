@@ -2328,10 +2328,10 @@ code-point-at@^1.0.0:
   resolved "https://registry.npmjs.org/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-codejar@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/codejar/-/codejar-2.0.0.tgz#1d2c7a67256720fcdd08e6aedcf728b0ad6c4bca"
-  integrity sha512-ElblCLcfll4BZIZCjW5ztP38yyaa4jHYIVWiWv12X657Oz6vmmvCgf3rh3qWm7p66okejOmlzK24Rtjy9lJZuw==
+codejar@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/codejar/-/codejar-3.3.0.tgz#87cc7fbb8cfcab25fded5311f7b81eafd51e066c"
+  integrity sha512-IiuA9RnxnkB5NClFvYpoPZmj6sMNEZwjy025x8ar4vH0QcZtds5nmelFRbEsM0QNsj/jX4/elGCqOGBHxXDYhw==
 
 collection-visit@^1.0.0:
   version "1.0.0"
