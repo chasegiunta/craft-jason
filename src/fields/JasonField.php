@@ -59,7 +59,7 @@ class JasonField extends Field
      */
     public static function displayName(): string
     {
-        return 'JSON (Jason)'; 
+        return 'JSON (Jason)';
     }
 
     // Public Methods
@@ -123,11 +123,7 @@ class JasonField extends Field
      */
     public function normalizeValue($value, ElementInterface $element = null)
     {
-        if (Craft::$app->request->getIsSiteRequest() && !Craft::$app->request->getIsActionRequest()) {
-            return json_decode($value, true);
-        } else {
-            return $value;
-        }
+        return parent::normalizeValue($value, $element);
     }
 
     /**
@@ -243,8 +239,8 @@ class JasonField extends Field
     public function getSettingsHtml()
     {
         // Register our asset bundle
-        Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class, View::POS_BEGIN );
-        
+        Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class, View::POS_BEGIN);
+
         $id = Craft::$app->getView()->formatInputId('jason');
 
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
@@ -364,7 +360,7 @@ class JasonField extends Field
             $valid = true;
         } else {
             // Assume we're accessing from control panel
-            $json = json_decode($value); 
+            $json = json_decode($value);
             if ($json === null) {
                 $json = $value;
                 $valid = false;
@@ -420,11 +416,11 @@ class JasonField extends Field
     public function validateIsJSON(ElementInterface $element, array $params = null)
     {
         $value = $element->getFieldValue($this->handle);
-        
-        $json = json_decode($value); 
+
+        $json = json_decode($value);
 
         if ($json === null) {
-        // JSON cannot be decoded
+            // JSON cannot be decoded
             $element->addError($this->handle, Craft::t('site', 'Not valid JSON.'));
         }
     }
