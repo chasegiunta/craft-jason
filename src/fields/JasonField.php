@@ -75,7 +75,7 @@ class JasonField extends Field
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
 
@@ -103,7 +103,7 @@ class JasonField extends Field
      * appended as well.
      * @see \yii\db\QueryBuilder::getColumnType()
      */
-    public function getContentColumnType(): string
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_TEXT;
     }
@@ -121,7 +121,7 @@ class JasonField extends Field
      *
      * @return mixed The prepared field value
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         if (Craft::$app->request->getIsSiteRequest() && !Craft::$app->request->getIsActionRequest()) {
             return json_decode($value, true);
@@ -143,7 +143,7 @@ class JasonField extends Field
      *
      * @return null|false `false` in the event that the method is sure that no elements are going to be found.
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }
@@ -240,7 +240,7 @@ class JasonField extends Field
      *
      * @return string|null
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         // Register our asset bundle
         Craft::$app->getView()->registerAssetBundle(JasonFieldAsset::class, View::POS_BEGIN );
@@ -356,7 +356,7 @@ class JasonField extends Field
      *
      * @return string The input HTML.
      */
-    public function getInputHtml($value, ElementInterface $element = null): string
+    public function getInputHtml(mixed $value, ?\craft\base\ElementInterface $element = null): string
     {
         // If array, assume we're accessing from template
         if (is_array($value)) {
