@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.1 - 2022-11-17
+
+### Fixed
+
+- Removes PHP `^8.1.0` requirement.
+
 ## 3.0.0 - 2022-09-20
 
 ### Changed
