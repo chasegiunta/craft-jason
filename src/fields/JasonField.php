@@ -420,12 +420,14 @@ class JasonField extends Field
     public function validateIsJSON(ElementInterface $element, array $params = null)
     {
         $value = $element->getFieldValue($this->handle);
-        
-        $json = json_decode($value); 
 
-        if ($json === null) {
-        // JSON cannot be decoded
-            $element->addError($this->handle, Craft::t('site', 'Not valid JSON.'));
+        if (!is_array($value)) {
+            $json = json_decode($value);
+
+            if ($json === null) {
+                // JSON cannot be decoded
+                $element->addError($this->handle, Craft::t('site', 'Not valid JSON.'));
+            }
         }
     }
 }
